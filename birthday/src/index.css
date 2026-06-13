@@ -1,0 +1,127 @@
+/* GLOBAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* COMMON STYLES - AURORA */
+.aurora {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -4;
+  opacity: 0.3;
+}
+
+.aurora1 {
+  background: #ff00ff;
+  top: -150px;
+  left: -100px;
+  animation: drift1 18s infinite alternate;
+}
+
+.aurora2 {
+  background: #00ffff;
+  top: 30%;
+  right: -100px;
+  animation: drift2 22s infinite alternate;
+}
+
+.aurora3 {
+  background: gold;
+  bottom: -150px;
+  left: 30%;
+  animation: drift3 20s infinite alternate;
+}
+
+@keyframes drift1 {
+  to {
+    transform: translate(150px, 100px);
+  }
+}
+
+@keyframes drift2 {
+  to {
+    transform: translate(-180px, 120px);
+  }
+}
+
+@keyframes drift3 {
+  to {
+    transform: translate(120px, -150px);
+  }
+}
+
+/* COMMON STYLES - PETALS */
+.petals {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.petal {
+  position: absolute;
+  top: -50px;
+  font-size: 22px;
+  animation: fall linear infinite;
+}
+
+.petal:nth-child(1) { left: 5%; animation-duration: 8s; }
+.petal:nth-child(2) { left: 12%; animation-duration: 10s; }
+.petal:nth-child(3) { left: 20%; animation-duration: 9s; }
+.petal:nth-child(4) { left: 30%; animation-duration: 12s; }
+.petal:nth-child(5) { left: 40%; animation-duration: 11s; }
+.petal:nth-child(6) { left: 50%; animation-duration: 9s; }
+.petal:nth-child(7) { left: 60%; animation-duration: 10s; }
+.petal:nth-child(8) { left: 70%; animation-duration: 11s; }
+.petal:nth-child(9) { left: 80%; animation-duration: 8s; }
+.petal:nth-child(10) { left: 90%; animation-duration: 12s; }
+
+@keyframes fall {
+  from {
+    transform: translateY(-100px) rotate(0deg);
+  }
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+/* COMMON STYLES - SPARKLES */
+.sparkle {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: gold;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  animation: sparkleBurst 1s forwards;
+}
+
+@keyframes sparkleBurst {
+  from {
+    opacity: 1;
+    transform: translate(0,0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform:
+      translate(var(--x), var(--y))
+      scale(0);
+  }
+}
+
+/* COMMON STARS */
+#stars {
+  position: fixed;
+  inset: 0;
+  z-index: -5;
+}

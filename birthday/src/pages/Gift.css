@@ -1,0 +1,215 @@
+/* Full Screen */
+.gift-page {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    #ff9a9e 0%,
+    #fad0c4 50%,
+    #fbc2eb 100%
+  );
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Title */
+.gift-page h1 {
+  font-size: 3rem;
+  color: white;
+  text-shadow: 0 0 15px rgba(255,255,255,0.8);
+  margin-bottom: 40px;
+  animation: fadeInDown 1s ease;
+}
+
+/* Gift Box Layout */
+.gift-boxes {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Gift Boxes */
+.gift-box {
+  width: 140px;
+  height: 140px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #ff4d6d, #ff758f);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 70px;
+  cursor: pointer;
+  box-shadow:
+    0 0 20px rgba(255, 77, 109, 0.5),
+    0 0 40px rgba(255, 77, 109, 0.4);
+
+  transition: all 0.4s ease;
+  animation: float 3s ease-in-out infinite;
+}
+
+.gift-box:hover {
+  transform: scale(1.15) rotate(8deg);
+  box-shadow:
+    0 0 30px rgba(255,255,255,0.8),
+    0 0 60px rgba(255,77,109,0.9);
+}
+
+/* Reveal Section */
+.gift-reveal {
+  text-align: center;
+  animation: revealGift 1s ease;
+}
+
+.gift-reveal h2 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 25px;
+}
+
+/* Gift Image */
+.gift-image {
+  width: 450px;
+  max-width: 90vw;
+  border-radius: 25px;
+
+  box-shadow:
+    0 0 30px rgba(255,255,255,0.8),
+    0 0 60px rgba(255,105,180,0.7);
+
+  animation: zoomGift 1.2s ease;
+}
+
+/* Back Button */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  padding: 12px 22px;
+  border: none;
+  border-radius: 30px;
+
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
+
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.next-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  padding: 12px 22px;
+  border: none;
+  border-radius: 30px;
+
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
+
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+.back-btn:hover {
+  transform: scale(1.1);
+  background: rgba(255,255,255,0.4);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Gift Reveal Animation */
+@keyframes revealGift {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomGift {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-20deg);
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Title Animation */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.birthday-message {
+  margin-top: 20px;
+  color: white;
+  font-size: 1.3rem;
+  max-width: 700px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+.flower {
+  position: absolute;
+  pointer-events: none;
+  font-size: 24px;
+  z-index: 9999;
+
+  animation: flowerFall 1.5s ease-out forwards;
+}
+
+@keyframes flowerFall {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -100px) scale(0.3) rotate(180deg);
+  }
+}
+
+body {
+  cursor: none;
+}

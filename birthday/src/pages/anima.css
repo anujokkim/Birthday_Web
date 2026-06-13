@@ -1,0 +1,17 @@
+.nextBtn {
+  height: 100px;
+  width: 100%;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit:contain;
+}

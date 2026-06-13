@@ -1,0 +1,417 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Hide default cursor */
+body {
+  cursor: none;
+  overflow-x: hidden;
+}
+
+/* Main Page */
+.page {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(
+    135deg,
+    #ff9a9e,
+    #fad0c4,
+    #fbc2eb,
+    #a18cd1
+  );
+}
+
+/* Stars Canvas */
+
+#stars {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Aurora Lights */
+
+.aurora {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.5;
+}
+
+.aurora1 {
+  width: 500px;
+  height: 500px;
+  background: #ff69b4;
+  top: -100px;
+  left: -100px;
+  animation: moveAurora1 12s infinite alternate ease-in-out;
+}
+
+.aurora2 {
+  width: 600px;
+  height: 600px;
+  background: #87ceeb;
+  bottom: -150px;
+  right: -150px;
+  animation: moveAurora2 15s infinite alternate ease-in-out;
+}
+
+.aurora3 {
+  width: 450px;
+  height: 450px;
+  background: #ffd700;
+  top: 40%;
+  left: 40%;
+  animation: moveAurora3 10s infinite alternate ease-in-out;
+}
+
+/* Floating Petals */
+
+.petals {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.petal {
+  position: absolute;
+  font-size: 24px;
+  top: -10%;
+  animation: fall linear infinite;
+}
+
+.petal:nth-child(1) { left: 5%; animation-duration: 12s; }
+.petal:nth-child(2) { left: 15%; animation-duration: 10s; }
+.petal:nth-child(3) { left: 25%; animation-duration: 14s; }
+.petal:nth-child(4) { left: 35%; animation-duration: 11s; }
+.petal:nth-child(5) { left: 45%; animation-duration: 13s; }
+.petal:nth-child(6) { left: 55%; animation-duration: 15s; }
+.petal:nth-child(7) { left: 65%; animation-duration: 10s; }
+.petal:nth-child(8) { left: 75%; animation-duration: 12s; }
+.petal:nth-child(9) { left: 85%; animation-duration: 14s; }
+.petal:nth-child(10) { left: 95%; animation-duration: 11s; }
+
+/* Main Card */
+
+.question-card {
+  position: relative;
+  z-index: 2;
+
+  width: 90%;
+  max-width: 750px;
+
+  padding: 40px;
+
+  border-radius: 30px;
+
+  backdrop-filter: blur(25px);
+
+  background: rgba(255,255,255,0.15);
+
+  border: 1px solid rgba(255,255,255,0.3);
+
+  box-shadow:
+    0 0 30px rgba(255,255,255,0.3),
+    0 0 80px rgba(255,105,180,0.3);
+
+  animation: cardAppear 1s ease;
+}
+
+/* Headings */
+
+.question-card h2 {
+  text-align: center;
+  color: white;
+  font-size: 2.4rem;
+  margin-bottom: 25px;
+
+  text-shadow:
+    0 0 15px white,
+    0 0 30px hotpink;
+}
+
+.question-card h3 {
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Inputs */
+
+.question-card input[type="text"],
+.question-card textarea {
+  width: 100%;
+
+  padding: 15px;
+  margin-bottom: 15px;
+
+  border: none;
+  border-radius: 15px;
+
+  background: rgba(255,255,255,0.25);
+
+  color: white;
+  font-size: 16px;
+
+  outline: none;
+}
+
+.question-card input[type="text"]:focus,
+.question-card textarea:focus {
+  box-shadow:
+    0 0 15px rgba(255,255,255,0.8),
+    0 0 30px hotpink;
+}
+
+.question-card textarea {
+  resize: none;
+}
+
+.question-card input::placeholder,
+.question-card textarea::placeholder {
+  color: rgba(255,255,255,0.9);
+}
+
+/* Radio Labels */
+
+.question-card label {
+  display: block;
+
+  color: white;
+  font-size: 18px;
+
+  margin: 10px 0;
+
+  transition: 0.3s ease;
+}
+
+.question-card label:hover {
+  transform: translateX(10px);
+}
+
+.question-card input[type="radio"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+/* Submit Button */
+
+.question-card button {
+  width: 100%;
+
+  margin-top: 25px;
+  padding: 16px;
+
+  border: none;
+  border-radius: 50px;
+
+  background: linear-gradient(
+    45deg,
+    #ff4d6d,
+    #ff8fab
+  );
+
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.4s ease;
+}
+
+.question-card button:hover {
+  transform: scale(1.05);
+
+  box-shadow:
+    0 0 20px white,
+    0 0 50px hotpink,
+    0 0 80px deeppink;
+}
+
+/* Cute Cursor */
+
+.cute-cursor {
+  position: fixed;
+  pointer-events: none;
+
+  z-index: 99999;
+
+  font-size: 40px;
+
+  transform: translate(-50%, -50%);
+
+  animation: cursorFloat 1.5s infinite ease-in-out;
+}
+
+/* Cursor Particles */
+
+.particle {
+  position: fixed;
+  border-radius: 50%;
+
+  pointer-events: none;
+  z-index: 9999;
+
+  animation: particleFly 1.2s ease-out forwards;
+
+  box-shadow:
+    0 0 10px currentColor,
+    0 0 20px currentColor,
+    0 0 30px currentColor;
+}
+
+/* Animations */
+
+@keyframes particleFly {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(var(--x), var(--y))
+      scale(0);
+  }
+}
+
+@keyframes cursorFloat {
+  0% {
+    transform: translate(-50%, -50%) rotate(-10deg);
+  }
+
+  50% {
+    transform: translate(-50%, -60%) rotate(10deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(-10deg);
+  }
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fall {
+  from {
+    top: -10%;
+    transform: rotate(0deg);
+  }
+
+  to {
+    top: 110%;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveAurora1 {
+  to {
+    transform: translate(250px, 150px);
+  }
+}
+
+@keyframes moveAurora2 {
+  to {
+    transform: translate(-250px, -150px);
+  }
+}
+
+@keyframes moveAurora3 {
+  to {
+    transform: translate(120px, -120px);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .question-card {
+    padding: 25px;
+  }
+
+  .question-card h2 {
+    font-size: 1.8rem;
+  }
+
+  .cute-cursor {
+    font-size: 30px;
+  }
+}
+.thank-you-card {
+  position: relative;
+  z-index: 5;
+
+  width: 90%;
+  max-width: 700px;
+
+  padding: 50px;
+  margin-left: 500px;
+ margin-top: 200px;
+  text-align: center;
+
+  border-radius: 30px;
+
+  backdrop-filter: blur(20px);
+
+  background: rgba(255,255,255,0.15);
+
+  border: 1px solid rgba(255,255,255,0.3);
+
+  box-shadow:
+    0 0 30px rgba(255,255,255,0.4),
+    0 0 80px hotpink;
+
+  animation: thankYouAppear 1.2s ease;
+}
+
+.thank-you-card h2 {
+  color: white;
+  font-size: 3rem;
+
+  margin-bottom: 20px;
+
+  text-shadow:
+    0 0 15px white,
+    0 0 30px hotpink;
+}
+
+.thank-you-card p {
+  color: rgb(47, 47, 47);
+  font-size: 1.3rem;
+  line-height: 1.8;
+}
+
+@keyframes thankYouAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

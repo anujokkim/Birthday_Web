@@ -8,13 +8,13 @@
     #fad0c4 50%,
     #fbc2eb 100%
   );
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   position: relative;
+  padding: 80px 20px 40px; /* top padding so content doesn't hide behind buttons */
 }
 
 /* Title */
@@ -24,6 +24,7 @@
   text-shadow: 0 0 15px rgba(255,255,255,0.8);
   margin-bottom: 40px;
   animation: fadeInDown 1s ease;
+  text-align: center; /* ← fix for mobile */
 }
 
 /* Gift Box Layout */
@@ -48,7 +49,6 @@
   box-shadow:
     0 0 20px rgba(255, 77, 109, 0.5),
     0 0 40px rgba(255, 77, 109, 0.4);
-
   transition: all 0.4s ease;
   animation: float 3s ease-in-out infinite;
 }
@@ -64,6 +64,7 @@
 .gift-reveal {
   text-align: center;
   animation: revealGift 1s ease;
+  padding: 0 20px; /* ← prevents edge overflow on mobile */
 }
 
 .gift-reveal h2 {
@@ -75,13 +76,11 @@
 /* Gift Image */
 .gift-image {
   width: 450px;
-  max-width: 90vw;
+  max-width: 90vw; /* already good — works on mobile */
   border-radius: 25px;
-
   box-shadow:
     0 0 30px rgba(255,255,255,0.8),
     0 0 60px rgba(255,105,180,0.7);
-
   animation: zoomGift 1.2s ease;
 }
 
@@ -90,18 +89,14 @@
   position: absolute;
   top: 20px;
   left: 20px;
-
-  padding: 12px 22px;
+  padding: 10px 18px; /* slightly smaller for mobile */
   border: none;
   border-radius: 30px;
-
   background: rgba(255,255,255,0.25);
   backdrop-filter: blur(10px);
-
   color: white;
-  font-size: 18px;
+  font-size: 16px; /* ← reduced for mobile */
   cursor: pointer;
-
   transition: 0.3s;
 }
 
@@ -109,107 +104,89 @@
   position: absolute;
   top: 20px;
   right: 20px;
-
-  padding: 12px 22px;
+  padding: 10px 18px;
   border: none;
   border-radius: 30px;
-
   background: rgba(255,255,255,0.25);
   backdrop-filter: blur(10px);
-
   color: white;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
-
   transition: 0.3s;
 }
+
 .back-btn:hover {
   transform: scale(1.1);
   background: rgba(255,255,255,0.4);
 }
 
-/* Floating Animation */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-/* Gift Reveal Animation */
-@keyframes revealGift {
-  from {
-    opacity: 0;
-    transform: scale(0.7);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes zoomGift {
-  0% {
-    opacity: 0;
-    transform: scale(0.3) rotate(-20deg);
-  }
-
-  70% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Title Animation */
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-60px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 .birthday-message {
   margin-top: 20px;
   color: white;
   font-size: 1.3rem;
   max-width: 700px;
   text-shadow: 0 0 10px rgba(255,255,255,0.6);
+  padding: 0 15px; /* ← prevents text touching screen edges */
 }
+
+/* Floating Animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes revealGift {
+  from { opacity: 0; transform: scale(0.7); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes zoomGift {
+  0% { opacity: 0; transform: scale(0.3) rotate(-20deg); }
+  70% { transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-60px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .flower {
   position: absolute;
   pointer-events: none;
   font-size: 24px;
   z-index: 9999;
-
   animation: flowerFall 1.5s ease-out forwards;
 }
 
 @keyframes flowerFall {
-  0% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -100px) scale(0.3) rotate(180deg);
-  }
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -100px) scale(0.3) rotate(180deg); }
 }
 
-body {
-  cursor: none;
+/* ── Mobile Responsive ── */
+@media (max-width: 480px) {
+  .gift-page h1 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+
+  .gift-box {
+    width: 110px;
+    height: 110px;
+    font-size: 55px;
+  }
+
+  .gift-boxes {
+    gap: 20px;
+  }
+
+  .gift-reveal h2 {
+    font-size: 1.5rem;
+  }
+
+  .birthday-message {
+    font-size: 1rem;
+  }
 }

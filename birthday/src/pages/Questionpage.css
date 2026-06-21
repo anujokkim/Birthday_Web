@@ -18,7 +18,7 @@ body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
-  padding: 40px 20px; /* ← safe padding on all screens */
+  padding: 40px 20px;
 }
 
 #stars {
@@ -202,14 +202,14 @@ body {
     0 0 30px currentColor;
 }
 
-/* ── Thank You Card — FIXED ── */
+/* Thank You Card */
 .thank-you-card {
   position: relative;
   z-index: 5;
   width: 90%;
   max-width: 700px;
   padding: 50px;
-  margin: auto; /* ← replaces the broken margin-left:500px */
+  margin: auto;
   text-align: center;
   border-radius: 30px;
   backdrop-filter: blur(20px);
@@ -229,7 +229,7 @@ body {
 }
 
 .thank-you-card p {
-  color: white; /* ← changed from dark grey, unreadable on pink bg */
+  color: white;
   font-size: 1.3rem;
   line-height: 1.8;
 }
@@ -273,7 +273,365 @@ body {
   to   { opacity: 1; transform: scale(1); }
 }
 
-/* ── Mobile ── */
+/* Ending Page Styles */
+.final-page {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+  padding: 40px 20px;
+}
+
+.ending-card {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 800px;
+  padding: 50px 40px;
+  border-radius: 30px;
+  backdrop-filter: blur(25px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 0 30px rgba(255, 255, 255, 0.3),
+    0 0 80px rgba(255, 105, 180, 0.3);
+  animation: cardAppear 1s ease;
+}
+
+.floating-heart {
+  font-size: 4rem;
+  text-align: center;
+  animation: heartbeat 1.5s ease-in-out infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.ending-title {
+  text-align: center;
+  color: white;
+  font-size: 2.8rem;
+  margin-bottom: 30px;
+  text-shadow: 0 0 15px white, 0 0 30px hotpink;
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 15px white, 0 0 30px hotpink; }
+  50% { text-shadow: 0 0 25px white, 0 0 50px hotpink, 0 0 75px deeppink; }
+}
+
+.love-message {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.message-line {
+  color: white;
+  font-size: 1.3rem;
+  line-height: 2;
+  margin: 15px 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.memories-section {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.memories-section h2 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  text-shadow: 0 0 15px white, 0 0 30px hotpink;
+}
+
+.memory-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.memory-card {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 25px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  min-width: 150px;
+  transition: transform 0.3s ease;
+  animation: floatUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.memory-card:nth-child(1) { animation-delay: 0.2s; }
+.memory-card:nth-child(2) { animation-delay: 0.4s; }
+.memory-card:nth-child(3) { animation-delay: 0.6s; }
+
+.memory-card:hover {
+  transform: translateY(-10px);
+}
+
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.memory-emoji {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.memory-card p {
+  color: white;
+  font-size: 1rem;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.feedback-section {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.feedback-section h2 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px white, 0 0 30px hotpink;
+}
+
+.feedback-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.feedback-textarea {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  font-size: 16px;
+  outline: none;
+  resize: none;
+  font-family: inherit;
+}
+
+.feedback-textarea:focus {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px hotpink;
+}
+
+.feedback-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.submit-feedback-btn {
+  width: 100%;
+  max-width: 300px;
+  padding: 18px 40px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(45deg, #ff4d6d, #ff8fab);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.4s ease;
+  box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4);
+}
+
+.submit-feedback-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px white, 0 0 50px hotpink, 0 0 80px deeppink;
+}
+
+.preview-section {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.preview-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.preview-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.birthday-preview {
+  margin-top: 20px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.birthday-preview h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px white, 0 0 20px hotpink;
+}
+
+.birthday-preview p {
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Final Thank You Card */
+.final-card {
+  position: relative;
+  z-index: 5;
+  width: 90%;
+  max-width: 700px;
+  padding: 50px 40px;
+  text-align: center;
+  border-radius: 30px;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 0 30px rgba(255, 255, 255, 0.4),
+    0 0 80px hotpink;
+  animation: thankYouAppear 1.2s ease;
+}
+
+.heart-icon {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.final-title {
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 30px;
+  text-shadow: 0 0 15px white, 0 0 30px hotpink;
+}
+
+.message-section {
+  margin: 30px 0;
+}
+
+.final-message {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.final-submessage {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.birthday-wishes {
+  margin: 40px 0;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.birthday-wishes h2 {
+  color: white;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 15px white, 0 0 30px hotpink;
+}
+
+.birthday-wishes p {
+  color: white;
+  font-size: 1.2rem;
+  line-height: 2;
+  margin: 10px 0;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.memories-note {
+  margin: 30px 0;
+  padding: 25px;
+  background: rgba(255, 182, 193, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.memories-note h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px white, 0 0 20px hotpink;
+}
+
+.memories-note p {
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.signature {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.signature p {
+  color: white;
+  font-size: 1.2rem;
+  margin: 10px 0;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.signature-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffb6c1;
+  text-shadow: 0 0 10px hotpink;
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
   .question-card {
     padding: 25px;
@@ -296,6 +654,44 @@ body {
   }
 
   .cute-cursor {
-    display: none; /* ← hide custom cursor on touch devices */
+    display: none;
+  }
+
+  .ending-card {
+    padding: 30px 20px;
+  }
+
+  .ending-title {
+    font-size: 2rem;
+  }
+
+  .message-line {
+    font-size: 1.1rem;
+  }
+
+  .memory-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .memory-card {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .final-card {
+    padding: 30px 20px;
+  }
+
+  .final-title {
+    font-size: 2rem;
+  }
+
+  .birthday-wishes h2 {
+    font-size: 1.8rem;
+  }
+
+  .birthday-wishes p {
+    font-size: 1rem;
   }
 }

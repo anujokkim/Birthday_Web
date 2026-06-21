@@ -1,0 +1,267 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.gift-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.topbar {
+  width: 100%;
+  max-width: 900px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.back-link,
+.music-btn,
+.next-btn {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.back-link:hover,
+.music-btn:hover,
+.next-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.scratch-container {
+  flex: 1;
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.scratch-title {
+  text-align: center;
+  color: #fff;
+  animation: fadeInDown 1s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scratch-title h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 255, 255, 0.3);
+  animation: pulse 2s ease-in-out infinite;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.scratch-title p {
+  font-size: 1.4rem;
+  opacity: 1;
+  font-weight: 600;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.scratch-card {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.reveal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.scratch-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.revealed-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 2rem;
+  animation: sparkleAnim 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkleAnim {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+.sparkle:nth-child(1) { top: 10%; left: 10%; }
+.sparkle:nth-child(2) { top: 20%; right: 15%; }
+.sparkle:nth-child(3) { bottom: 30%; left: 20%; }
+
+.progress-bar {
+  width: 100%;
+  max-width: 400px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6b6b, #feca57, #ff9ff3);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+  background-size: 200% 100%;
+  animation: progressGradient 2s linear infinite;
+}
+
+@keyframes progressGradient {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+.progress-text {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+  margin-top: 10px;
+}
+
+.revealed-message {
+  text-align: center;
+  color: #fff;
+  animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.revealed-message h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.revealed-message p {
+  font-size: 1.3rem;
+  opacity: 0.95;
+}
+
+@media (max-width: 600px) {
+  .scratch-card {
+    width: 320px;
+    height: 320px;
+  }
+  
+  .scratch-title h1 {
+    font-size: 2rem;
+  }
+  
+  .topbar {
+    padding: 1rem;
+  }
+  
+  .back-link,
+  .music-btn,
+  .next-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .scratch-card {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .scratch-title h1 {
+    font-size: 1.5rem;
+  }
+  
+  .scratch-title p {
+    font-size: 1rem;
+  }
+}

@@ -79,7 +79,7 @@ export default function Gift() {
       </button>
      
      <button className="next-btn"
-     onClick={()=> navigate("/questions")}
+     onClick={()=> navigate("/gift-frame")}
      >Next </button>
       
 
